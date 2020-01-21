@@ -1,27 +1,31 @@
-#install virtual env
-ssh```
-sudo apt-get install python-virtualenv
-pip install --index-url=https://pypi.python.org/simple/ flask
+## install virtual env
+```ssh
+ sudo apt-get install python-virtualenv 
+ pip install --index-url=https://pypi.python.org/simple/ flask  
 ```
-#Vagrant File
-ssh```
+## Vagrant File
+```ssh
     config.vm.network :forwarded_port, guest: 5000, host: 5000
 ```
-#activate virtual env
-ssh```
+## create  virtual env
+```ssh
+ virtualenv --python=/usr/bin/python3.6 venv --always-copy
+```
+## activate virtual env
+```ssh
 . venv/bin/activate
 ```
-#main file
-ssh```
+## main file
+```py
 if __name__ == '__main__':
     app.run("0.0.0.0", debug=True)
 ```
-ssh```
-#run app 
+## run app 
+```py
 FLASK_APP=index.py
 flask run --host=0.0.0.0
 ```
 
-#versions
-python 3.4
-flask 1.1
+## versions
++ python 3.4
++ flask 1.1
