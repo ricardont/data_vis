@@ -1,8 +1,11 @@
 from flask import Flask, render_template
+from service import Data
 app = Flask(__name__)
+data = Data()
 @app.route('/')
 def hello():
-    return render_template("home.html")
+    return  str(data.r[0])
+    #return render_template("home.html")
 @app.route('/profile/<name>')
 def profile(name=None):
     return render_template("profile.html", name=name)
