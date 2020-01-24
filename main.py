@@ -4,10 +4,11 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return render_template("home.html")
-@app.route('/poblacion/')
-def poblacion():
+@app.route('/population/')
+def population():
     data = Inegi()
-    return jsonify(data.poblacion) 
+    djson = jsonify(data.population) 
+    return render_template("grid.html", data=data.population)    
 @app.route('/profile/<name>')    
 def profile(name=None):
     return render_template("profile.html", name=name)

@@ -9,11 +9,11 @@ class Inegi:
         if response.status_code==200:
             content= response.json()
             Series=content['Series'][0]['OBSERVATIONS']     
-        #Obtención de la lista de observaciones 
-        Observaciones=[]
-        for obs in Series:  Observaciones.append(float(obs['OBS_VALUE']));    
-        #Generación del promedio de la lista de observaciones 
+        #Obtención de la lista de Observations 
+        Observations=[]
+        for obs in Series:  Observations.append(float(obs['OBS_VALUE']));    
+        #Generación del promedio de la lista de Observations 
         sum=0.0
-        for i in range(0,len(Observaciones)): sum=sum+Observaciones[i];  
-        resultado=sum/len(Observaciones);
-        self.poblacion = Series
+        for i in range(0,len(Observations)): sum=sum+Observations[i];  
+        result=sum/len(Observations);
+        self.population = Series
