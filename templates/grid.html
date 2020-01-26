@@ -1,31 +1,24 @@
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<div class="table-responsive-md">   
-<table id="tblx" class="table table-sm table-striped table-bordered" cellspacing="0" width="15%"  >
-    <thead class="thead-light">
-        <tr>
-            <th>Año</th>
-            <th>Poblacion</th>
-        </tr>
-    </thead>  
-    <tbody>
-    {% for i in data %}
-        <tr>
-            <td>{{ i.TIME_PERIOD }}</td>
-            <td>{{ i.OBS_VALUE|int }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<script>
-$( document ).on( function() {
-    $("#tblx").dataTable();    
-});
-</script>
-</div>
+{% extends "layout.html" %}
+{% block content %}
+    <table id="tblx" class="table table-sm table-striped table-bordered" cellspacing="0" width="15%"  >
+        <thead class="thead-light">
+            <tr>
+                <th>Año</th>
+                <th>Poblacion</th>
+            </tr>
+        </thead>  
+        <tbody>
+        {% for i in data %}
+            <tr>P
+                <td>{{ i.TIME_PERIOD }}</td>
+                <td>{{ i.OBS_VALUE|int }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        $( document ).on( function() {
+            $("#tblx").dataTable();    
+        });
+    </script>
+{% endblock %}
