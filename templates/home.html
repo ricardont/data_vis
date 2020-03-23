@@ -1,5 +1,11 @@
 {% extends "layout.html" %}
 {% block content %}
-  <h1>Welcome to Data Visualization Home Page</h1>
   <p>Statistics of Mexico.</p>
+  <div class="row">
+    <div class="col-md-4">{% include 'card_totals.html' %}</div>
+    <div class="col-md-4">{% include 'card_totals.html' %}</div>
+    <div class="col-md-4">{% include 'card_totals.html' %}</div>
+  </div>
+  <div class="row"></div>
+  
 {% endblock %}

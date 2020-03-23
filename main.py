@@ -1,9 +1,12 @@
 from flask import Flask, render_template, jsonify
-from service import Inegi
+# from service_inegi import Inegi
+from services import Corona, Inegi
 app = Flask(__name__)
 @app.route('/')
 def hello():
-    return render_template("home.html")
+    data = Corona()
+    print( data.totals["confirmed"] )
+    return render_template("home.html", data=data)
 @app.route('/population/')
 def population():
     data = Inegi()

@@ -18,3 +18,19 @@ class Inegi:
         for i in range(0,len(Observations)): sum=sum+Observations[i];  
         result=sum/len(Observations);
         self.population = Series
+        
+class Corona:
+    def __init__(self):
+        url_confirmed='https://api.covid19api.com/live/country/mexico/status/confirmed'
+        url_deaths='https://api.covid19api.com/live/country/mexico/status/deaths'
+        url_recovered='https://api.covid19api.com/live/country/mexico/status/recovered'
+        resp_confirmed=requests.get(url_confirmed)
+        resp_deaths=requests.get(url_deaths)
+        resp_recovered=requests.get(url_recovered)
+        if resp_recovered.status_code==200:
+            confirmed=resp_confirmed.json()[1]["Cases"]
+            deaths=resp_deaths.json()[1]["Cases"]
+            recovered=resp_recovered.json()[1]["Cases"]
+            # active = resp_recovered - (deaths+recovered) 
+            active = 5 
+            self.totals = {'confirmed': confirmed, 'deaths': deaths, 'recovered': recovered, 'active': active }
