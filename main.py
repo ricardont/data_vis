@@ -5,7 +5,6 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     data = Corona()
-    print( data.totals["confirmed"] )
     return render_template("home.html", data=data)
 @app.route('/population/')
 def population():

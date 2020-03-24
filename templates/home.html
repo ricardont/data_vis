@@ -1,11 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-  <p>Statistics of Mexico.</p>
   <div class="row">
-    <div class="col-md-4">{% include 'card_totals.html' %}</div>
-    <div class="col-md-4">{% include 'card_totals.html' %}</div>
-    <div class="col-md-4">{% include 'card_totals.html' %}</div>
-  </div>
+    {% for total in data.totals %}
+      <div class="col-md-4">{% include 'total.html' %}</div>
+    {% endfor %}
+    </div>
   <div class="row"></div>
-  
 {% endblock %}
