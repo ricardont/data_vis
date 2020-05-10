@@ -21,14 +21,16 @@ class Inegi:
         
 class Corona:
     def __init__(self):
-        tot_url_prefix='https://api.covid19api.com/live/country/mexico/status/'
-        types_tot = [{'type': 'confirmed',  'cases': 9999, "color":"orange" },
-                     {'type': 'deaths',     'cases': 9999, "color":"red" },
-                     {'type': 'recovered',  'cases': 9999, "color":"green" }]
-        for i in range(len(types_tot)):
-            tot_url = tot_url_prefix + types_tot[i]["type"]
-            call=requests.get(tot_url)
-            if call.status_code==200:
-                print(tot_url)
-                types_tot[i]["cases"] = call.json()[-1]["Cases"]
+        url='https://api.covid19api.com/summary'
+        types_tot = [{'type_src': 'TotalConfirmed', 'type': 'confirmed', 'cases': 9999, "color":"orange",  "new":0},
+                     {'type_src': 'NewConfirmed',   'type': 'confirmed_new', 'cases': 9999, "color":"orange" , "new":1},
+                     {'type_src': 'TotalRecovered', 'type': 'recovered', 'cases': 9999, "color":"green"  , "new":0},
+                     {'type_src': 'NewRecovered',   'type': 'recovered_new', 'cases': 9999, "color":"green"  , "new":1},
+                     {'type_src': 'TotalDeaths',    'type': 'deaths', 'cases': 9999, "color":"red"    , "new":0},
+                     {'type_src': 'NewDeaths',      'type': 'deaths_new', 'cases': 9999, "color":"red"    , "new":1}]
+        call=requests.get(url)
+        if call.status_code==200:
+            cases_mx=call.json()["Countries"][108]
+            for i in range(len(types_tot)):
+                types_tot[i]["cases"] = cases_mx[types_tot[i]["type_src"]]
         self.totals = types_tot

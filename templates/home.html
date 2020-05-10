@@ -2,7 +2,9 @@
 {% block content %}
   <div class="row">
     {% for total in data.totals %}
-      <div class="col-md-4">{% include 'total.html' %}</div>
+      {% if total.new == 0 %}
+        <div class="col-md-4">{% include 'total.html' %}</div>
+      {% endif %}
     {% endfor %}
     </div>
   <div class="row"></div>
