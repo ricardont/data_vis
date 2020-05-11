@@ -38,7 +38,21 @@ git config --global http.proxy http://proxyuser:proxypwd@proxy.server.com:8080
 git config --global --unset http.proxy
 git config --global --get http.proxy
 ```
-## versions
-+ python 3.4
+## dependencies
++ python 3.7
 + flask 1.1
++ requests
 
+## heroku deployment
+add Procfile with the following 
+```ssh
+    web: gunicorn main:app
+```
+add requirements.txt file with the main dependencies:
+```ssh
+Flask
+gunicorn
+requests
+```
+for some reason if push from console to heroku the deployment failed
+I had to push on github and on heroku panel deploy manually from that github repository
